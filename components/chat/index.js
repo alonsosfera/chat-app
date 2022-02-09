@@ -3,7 +3,7 @@ import { Button, Card, Grid, Textarea } from "@nextui-org/react";
 import { useChat } from "./useChat";
 
 const Chat = () => {
-  let inputBox, messageEnd
+  let inputBox
   const [
     messageValue,
     messages,
@@ -11,18 +11,13 @@ const Chat = () => {
     sendMessage,
     setMessageText,
     keyPress
-  ] = useChat(inputBox, messageEnd)
-
-  useEffect(() => {
-    messageEnd.scrollIntoView({ behaviour: "smooth" })
-  })
+  ] = useChat()
 
   return (
     <Grid.Container className="chat" direction="column">
       <Grid className="messages">
         <Card className="card">
           {messages}
-          <div ref={element => { messageEnd = element }} />
         </Card>
       </Grid>
       <Grid className="input-form" xs={12}>
